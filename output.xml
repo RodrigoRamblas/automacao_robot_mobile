@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1 (Python 3.11.4 on win32)" generated="20230724 15:37:54.473" rpa="false" schemaversion="4">
+<robot generator="Robot 6.1 (Python 3.11.4 on win32)" generated="20230728 16:56:25.507" rpa="false" schemaversion="4">
 <suite id="s1" name="Mobile" source="c:\Robot_Mobile\Tests\Mobile.robot">
-<kw name="Inicializar Teste e Conectar ao Aparelho" library="CommonsResource" type="SETUP">
+<kw name="Abrir navegador" library="CommonsResource" type="SETUP">
 <kw name="Open Application" library="AppiumLibrary">
-<arg>http://127.0.0.1:4723/wd/hub</arg>
+<arg>http://localhost:4000/wd/hub</arg>
+<arg>platform=Android</arg>
 <arg>platformName=Android</arg>
-<arg>platformVersion=13.0</arg>
+<arg>platformVersion=11.0</arg>
 <arg>deviceName=emulator-5554</arg>
-<arg>appPackage=com.example.myapplication</arg>
-<arg>appActivity=.MainActivity</arg>
+<arg>appPackage=com.android.chrome</arg>
+<arg>appActivity=com.google.android.apps.chrome.Main</arg>
 <doc>Opens a new application to given Appium server.
 Capabilities of appium server, Android and iOS,
 Please check https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/server-args.md
@@ -16,66 +17,189 @@ Please check https://github.com/appium/appium/blob/master/docs/en/writing-runnin
 | remote_url          | Yes    | Appium server url |
 | alias               | no     | alias             |
 | strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
-<kw name="Capture Page Screenshot" library="AppiumLibrary">
-<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
-<msg timestamp="20230724 15:38:01.218" level="FAIL">No application is open</msg>
-<status status="FAIL" starttime="20230724 15:38:01.217" endtime="20230724 15:38:01.223"/>
+<status status="PASS" starttime="20230728 16:56:25.811" endtime="20230728 16:56:38.312"/>
 </kw>
-<msg timestamp="20230724 15:38:01.223" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg timestamp="20230724 15:38:01.224" level="FAIL">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
-Stacktrace:
-UnknownError: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
-    at UIA2Proxy.command (C:\Users\rodri\AppData\Local\Programs\Appium Server GUI\resources\app\node_modules\appium\node_modules\appium-base-driver\lib\jsonwp-proxy\proxy.js:274:13)
-    at runMicrotasks (&lt;anonymous&gt;)
-    at processTicksAndRejections (internal/process/task_queues.js:97:5)
-    at AndroidUiautomator2Driver.commands.getDevicePixelRatio (C:\Users\rodri\AppData\Local\Programs\Appium Server GUI\resources\app\node_modules\appium\node_modules\appium-uiautomator2-driver\lib\commands\viewport.js:14:10)
-    at AndroidUiautomator2Driver.fillDeviceDetails (C:\Users\rodri\AppData\Local\Programs\Appium Server GUI\resources\app\node_modules\appium\node_modules\appium-uiautomator2-driver\lib\driver.js:244:28)
-    at AndroidUiautomator2Driver.createSession (C:\Users\rodri\AppData\Local\Programs\Appium Server GUI\resources\app\node_modules\appium\node_modules\appium-uiautomator2-driver\lib\driver.js:230:7)
-    at AppiumDriver.createSession (C:\Users\rodri\AppData\Local\Programs\Appium Server GUI\resources\app\node_modules\appium\lib\appium.js:387:35)</msg>
-<status status="FAIL" starttime="20230724 15:37:54.722" endtime="20230724 15:38:01.225"/>
+<status status="PASS" starttime="20230728 16:56:25.808" endtime="20230728 16:56:38.312"/>
 </kw>
-<status status="FAIL" starttime="20230724 15:37:54.721" endtime="20230724 15:38:01.225"/>
+<test id="s1-t1" name="CT01: Pesquisar iphone 14 no site da amazon" line="12">
+<kw name="Dado que abro o navegador" library="MobileResource">
+<kw name="Aceitar permições" library="CommonsResource">
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<arg>terms_accept</arg>
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<msg timestamp="20230728 16:56:39.658" level="INFO">criteria is terms_accept</msg>
+<status status="PASS" starttime="20230728 16:56:38.330" endtime="20230728 16:56:39.659"/>
 </kw>
-<test id="s1-t1" name="Open Browser" line="11">
-<doc>Abrir navegador</doc>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>xpath=//*[contains(@resource-id, 'terms_accept') and @text='Aceitar e continuar']</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20230728 16:56:39.661" level="INFO">Clicking element 'xpath=//*[contains(@resource-id, 'terms_accept') and @text='Aceitar e continuar']'.</msg>
+<msg timestamp="20230728 16:56:41.520" level="INFO">xpath criteria: //*[contains(@resource-id, 'terms_accept') and @text='Aceitar e continuar']</msg>
+<status status="PASS" starttime="20230728 16:56:39.660" endtime="20230728 16:56:41.520"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<arg>positive_button</arg>
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<msg timestamp="20230728 16:56:42.308" level="INFO">criteria is positive_button
+criteria is positive_button</msg>
+<status status="PASS" starttime="20230728 16:56:41.521" endtime="20230728 16:56:42.308"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>xpath=//*[contains(@resource-id, 'positive_button')]</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20230728 16:56:42.309" level="INFO">Clicking element 'xpath=//*[contains(@resource-id, 'positive_button')]'.</msg>
+<msg timestamp="20230728 16:56:42.741" level="INFO">xpath criteria: //*[contains(@resource-id, 'positive_button')]</msg>
+<status status="PASS" starttime="20230728 16:56:42.308" endtime="20230728 16:56:42.742"/>
+</kw>
+<status status="PASS" starttime="20230728 16:56:38.314" endtime="20230728 16:56:42.742"/>
+</kw>
+<status status="PASS" starttime="20230728 16:56:38.313" endtime="20230728 16:56:42.742"/>
+</kw>
+<kw name="Quando acesso a site da amazon" library="MobileResource">
+<kw name="Acessar o site da amazon" library="MobileResource">
+<kw name="Set Appium Timeout" library="AppiumLibrary">
+<arg>30000</arg>
+<doc>Sets the timeout in seconds used by various keywords.</doc>
+<status status="PASS" starttime="20230728 16:56:42.744" endtime="20230728 16:56:42.745"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<arg>com.android.chrome:id/positive_button</arg>
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<msg timestamp="20230728 16:56:42.836" level="INFO">criteria is com.android.chrome:id/positive_button</msg>
+<status status="PASS" starttime="20230728 16:56:42.745" endtime="20230728 16:56:42.837"/>
+</kw>
+<kw name="Set Appium Timeout" library="AppiumLibrary">
+<arg>30000</arg>
+<doc>Sets the timeout in seconds used by various keywords.</doc>
+<status status="PASS" starttime="20230728 16:56:42.837" endtime="20230728 16:56:42.837"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<arg>com.android.chrome:id/search_box_text</arg>
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<msg timestamp="20230728 16:56:45.520" level="INFO">criteria is com.android.chrome:id/search_box_text</msg>
+<status status="PASS" starttime="20230728 16:56:42.837" endtime="20230728 16:56:45.520"/>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>com.android.chrome:id/search_box_text</arg>
+<arg>amazon.com.br</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<msg timestamp="20230728 16:56:45.521" level="INFO">Typing text 'amazon.com.br' into text field 'com.android.chrome:id/search_box_text'</msg>
+<msg timestamp="20230728 16:56:46.155" level="INFO">criteria is com.android.chrome:id/search_box_text</msg>
+<status status="PASS" starttime="20230728 16:56:45.521" endtime="20230728 16:56:46.155"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>com.android.chrome:id/line_1</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20230728 16:56:46.157" level="INFO">Clicking element 'com.android.chrome:id/line_1'.</msg>
+<msg timestamp="20230728 16:56:47.794" level="INFO">criteria is com.android.chrome:id/line_1</msg>
+<status status="PASS" starttime="20230728 16:56:46.155" endtime="20230728 16:56:47.795"/>
+</kw>
+<kw name="Set Appium Timeout" library="AppiumLibrary">
+<arg>60000</arg>
+<doc>Sets the timeout in seconds used by various keywords.</doc>
+<status status="PASS" starttime="20230728 16:56:47.795" endtime="20230728 16:56:47.795"/>
+</kw>
+<status status="PASS" starttime="20230728 16:56:42.744" endtime="20230728 16:56:47.795"/>
+</kw>
+<status status="PASS" starttime="20230728 16:56:42.744" endtime="20230728 16:56:47.796"/>
+</kw>
+<kw name="E pesquiso iphone 14" library="MobileResource">
+<kw name="Pesquisar iphone 14" library="MobileResource">
+<kw name="Set Appium Timeout" library="AppiumLibrary">
+<arg>60000</arg>
+<doc>Sets the timeout in seconds used by various keywords.</doc>
+<status status="PASS" starttime="20230728 16:56:47.797" endtime="20230728 16:56:47.797"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<arg>xpath=//android.view.View[@content-desc="Limpar palavras-chave da pesquisa"]</arg>
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<msg timestamp="20230728 16:56:55.057" level="INFO">xpath criteria: //android.view.View[@content-desc="Limpar palavras-chave da pesquisa"]
+xpath criteria: //android.view.View[@content-desc="Limpar palavras-chave da pesquisa"]
+xpath criteria: //android.view.View[@content-desc="Limpar palavras-chave da pesquisa"]</msg>
+<status status="PASS" starttime="20230728 16:56:47.797" endtime="20230728 16:56:55.058"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>xpath=//android.view.View[@content-desc="Limpar palavras-chave da pesquisa"]</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20230728 16:56:55.059" level="INFO">Clicking element 'xpath=//android.view.View[@content-desc="Limpar palavras-chave da pesquisa"]'.</msg>
+<msg timestamp="20230728 16:56:56.196" level="INFO">xpath criteria: //android.view.View[@content-desc="Limpar palavras-chave da pesquisa"]</msg>
+<status status="PASS" starttime="20230728 16:56:55.058" endtime="20230728 16:56:56.196"/>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>xpath=//hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.FrameLayout[2]/android.webkit.WebView/android.view.View/android.view.View[1]/android.view.View/android.view.View[2]/android.view.View[1]/android.view.View/android.widget.EditText</arg>
+<arg>iphone 14</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<msg timestamp="20230728 16:56:56.197" level="INFO">Typing text 'iphone 14' into text field 'xpath=//hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.FrameLayout[2]/android.webkit.WebView/android.view.View/android.view.View[1]/android.view.View/android.view.View[2]/android.view.View[1]/android.view.View/android.widget.EditText'</msg>
+<msg timestamp="20230728 16:56:57.959" level="INFO">xpath criteria: //hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.FrameLayout[2]/android.webkit.WebView/android.view.View/android.view.View[1]/android.view.View/android.view.View[2]/android.view.View[1]/android.view.View/android.widget.EditText</msg>
+<status status="PASS" starttime="20230728 16:56:56.196" endtime="20230728 16:56:57.959"/>
+</kw>
+<kw name="Set Appium Timeout" library="AppiumLibrary">
+<arg>60000</arg>
+<doc>Sets the timeout in seconds used by various keywords.</doc>
+<status status="PASS" starttime="20230728 16:56:57.960" endtime="20230728 16:56:57.960"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<arg>xpath=//android.webkit.WebView/android.view.View/android.view.View[1]/android.view.View/android.view.View[2]/android.view.View[1]/android.view.View[2]/android.view.View/android.view.View[1]</arg>
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<msg timestamp="20230728 16:56:59.726" level="INFO">xpath criteria: //android.webkit.WebView/android.view.View/android.view.View[1]/android.view.View/android.view.View[2]/android.view.View[1]/android.view.View[2]/android.view.View/android.view.View[1]
+xpath criteria: //android.webkit.WebView/android.view.View/android.view.View[1]/android.view.View/android.view.View[2]/android.view.View[1]/android.view.View[2]/android.view.View/android.view.View[1]</msg>
+<status status="PASS" starttime="20230728 16:56:57.960" endtime="20230728 16:56:59.726"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>xpath=//android.webkit.WebView/android.view.View/android.view.View[1]/android.view.View/android.view.View[2]/android.view.View[1]/android.view.View[2]/android.view.View/android.view.View[1]</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20230728 16:56:59.727" level="INFO">Clicking element 'xpath=//android.webkit.WebView/android.view.View/android.view.View[1]/android.view.View/android.view.View[2]/android.view.View[1]/android.view.View[2]/android.view.View/android.view.View[1]'.</msg>
+<msg timestamp="20230728 16:57:06.275" level="INFO">xpath criteria: //android.webkit.WebView/android.view.View/android.view.View[1]/android.view.View/android.view.View[2]/android.view.View[1]/android.view.View[2]/android.view.View/android.view.View[1]</msg>
+<status status="PASS" starttime="20230728 16:56:59.726" endtime="20230728 16:57:06.275"/>
+</kw>
+<status status="PASS" starttime="20230728 16:56:47.797" endtime="20230728 16:57:06.275"/>
+</kw>
+<status status="PASS" starttime="20230728 16:56:47.796" endtime="20230728 16:57:06.276"/>
+</kw>
+<kw name="Então valido a pesquisa do iphone" library="MobileResource">
+<kw name="Validar a pesquisa do iphone" library="MobileResource">
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<arg>xpath=//android.view.View[@text="Apple iPhone14 (128 GB) – (PRODUCT) RED"]</arg>
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<msg timestamp="20230728 16:57:06.780" level="INFO">xpath criteria: //android.view.View[@text="Apple iPhone14 (128 GB) – (PRODUCT) RED"]</msg>
+<status status="PASS" starttime="20230728 16:57:06.276" endtime="20230728 16:57:06.780"/>
+</kw>
+<kw name="Page Should Contain Element" library="AppiumLibrary">
+<arg>xpath=//android.view.View[@text="Apple iPhone14 (128 GB) – (PRODUCT) RED"]</arg>
+<doc>Verifies that current page contains `locator` element.</doc>
+<msg timestamp="20230728 16:57:07.126" level="INFO">Current page contains element 'xpath=//android.view.View[@text="Apple iPhone14 (128 GB) – (PRODUCT) RED"]'.</msg>
+<msg timestamp="20230728 16:57:07.126" level="INFO">xpath criteria: //android.view.View[@text="Apple iPhone14 (128 GB) – (PRODUCT) RED"]</msg>
+<status status="PASS" starttime="20230728 16:57:06.780" endtime="20230728 16:57:07.127"/>
+</kw>
+<status status="PASS" starttime="20230728 16:57:06.276" endtime="20230728 16:57:07.127"/>
+</kw>
+<status status="PASS" starttime="20230728 16:57:06.276" endtime="20230728 16:57:07.127"/>
+</kw>
+<doc>CT01</doc>
 <tag>CT01</tag>
-<status status="FAIL" starttime="20230724 15:38:01.225" endtime="20230724 15:38:01.226">Parent suite setup failed:
-WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
-Stacktrace:
-UnknownError: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
-    at UIA2Proxy.command (C:\Users\rodri\AppData\Local\Programs\Appium Server GUI\resources\app\node_modules\appium\node_modules\appium-base-driver\lib\jsonwp-proxy\proxy.js:274:13)
-    at runMicrotasks (&lt;anonymous&gt;)
-    at processTicksAndRejections (internal/process/task_queues.js:97:5)
-    at AndroidUiautomator2Driver.commands.getDevicePixelRatio (C:\Users\rodri\AppData\Local\Programs\Appium Server GUI\resources\app\node_modules\appium\node_modules\appium-uiautomator2-driver\lib\commands\viewport.js:14:10)
-    at AndroidUiautomator2Driver.fillDeviceDetails (C:\Users\rodri\AppData\Local\Programs\Appium Server GUI\resources\app\node_modules\appium\node_modules\appium-uiautomator2-driver\lib\driver.js:244:28)
-    at AndroidUiautomator2Driver.createSession (C:\Users\rodri\AppData\Local\Programs\Appium Server GUI\resources\app\node_modules\appium\node_modules\appium-uiautomator2-driver\lib\driver.js:230:7)
-    at AppiumDriver.createSession (C:\Users\rodri\AppData\Local\Programs\Appium Server GUI\resources\app\node_modules\appium\lib\appium.js:387:35)</status>
+<status status="PASS" starttime="20230728 16:56:38.312" endtime="20230728 16:57:07.127"/>
 </test>
+<kw name="Fechar Sistema" library="CommonsResource" type="TEARDOWN">
+<kw name="Close Application" library="AppiumLibrary">
+<doc>Closes the current application and also close webdriver session.</doc>
+<status status="PASS" starttime="20230728 16:57:07.129" endtime="20230728 16:57:07.826"/>
+</kw>
+<status status="PASS" starttime="20230728 16:57:07.129" endtime="20230728 16:57:07.826"/>
+</kw>
 <doc>Testes dedicados automação mobile</doc>
-<status status="FAIL" starttime="20230724 15:37:54.481" endtime="20230724 15:38:01.229">Suite setup failed:
-WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
-Stacktrace:
-UnknownError: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
-    at UIA2Proxy.command (C:\Users\rodri\AppData\Local\Programs\Appium Server GUI\resources\app\node_modules\appium\node_modules\appium-base-driver\lib\jsonwp-proxy\proxy.js:274:13)
-    at runMicrotasks (&lt;anonymous&gt;)
-    at processTicksAndRejections (internal/process/task_queues.js:97:5)
-    at AndroidUiautomator2Driver.commands.getDevicePixelRatio (C:\Users\rodri\AppData\Local\Programs\Appium Server GUI\resources\app\node_modules\appium\node_modules\appium-uiautomator2-driver\lib\commands\viewport.js:14:10)
-    at AndroidUiautomator2Driver.fillDeviceDetails (C:\Users\rodri\AppData\Local\Programs\Appium Server GUI\resources\app\node_modules\appium\node_modules\appium-uiautomator2-driver\lib\driver.js:244:28)
-    at AndroidUiautomator2Driver.createSession (C:\Users\rodri\AppData\Local\Programs\Appium Server GUI\resources\app\node_modules\appium\node_modules\appium-uiautomator2-driver\lib\driver.js:230:7)
-    at AppiumDriver.createSession (C:\Users\rodri\AppData\Local\Programs\Appium Server GUI\resources\app\node_modules\appium\lib\appium.js:387:35)</status>
+<status status="PASS" starttime="20230728 16:56:25.513" endtime="20230728 16:57:07.826"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="0" fail="1" skip="0">CT01</stat>
+<stat pass="1" fail="0" skip="0">CT01</stat>
 </tag>
 <suite>
-<stat pass="0" fail="1" skip="0" id="s1" name="Mobile">Mobile</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Mobile">Mobile</stat>
 </suite>
 </statistics>
 <errors>
-<msg timestamp="20230724 15:38:01.223" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
 </errors>
 </robot>
